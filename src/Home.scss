@@ -1,0 +1,48 @@
+@mixin p-general-layout{
+    position: absolute;
+    font-size: 200px;
+    left: 30px;
+    font-weight: bold;
+    color: orange;
+}
+#test{
+    @include p-general-layout();
+    top: 30px;
+}
+#test-2{
+    @include p-general-layout();
+    top: 200px;
+}
+
+// - - > Box
+#outer-box{
+    position: absolute;
+    width: 820px;
+    height: 372px;
+    left: 50px;
+    top: 100px;
+
+    background: #D2853D;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    box-shadow: inset 10px 0px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+
+    #inner-box{
+        position: absolute;
+        top: -20px;
+        left: 10px;
+        width: 820px;
+        height: 372px;
+
+        background: #FFF6ED;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        border-radius: 20px;
+    }
+    &:hover{
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+}
