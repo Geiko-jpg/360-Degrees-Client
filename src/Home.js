@@ -9,15 +9,16 @@ const BoxTest = () => {
         setTest("THIS IS 360 DEGREES WEBSITE"); // set
     }, []);
     // - - > CLICK FUNCTIONS
-    function pressed(){
+    function pressed(event){
         alert(`This is the Alert -> ${testVariable}`);
+        event.preventDefault();
     }
 
     return(
         // - - > HTML NA TOH
         <>
             {/*THIS IS A BOX*/}
-            <div id="outer-box" onClick={() => pressed()} >
+            <div id="outer-box" onClick={pressed} >
                 <div id="inner-box">
 
                 </div>
