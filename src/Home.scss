@@ -1,48 +1,219 @@
-@mixin p-general-layout{
+// - - > Non-Retina Screen Variation
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+
+}
+// Declare SCSS Constants HERE!
+$backgroundColor: #EFEDD8; // Primary Color Dirty White
+$generalOrange: #CD6E2E; // 360 Degrees General Orange Color
+$generalFont: 'Barlow Condensed', sans-serif; // general font to implement
+
+// - - > SCSS LAYOUT PROPER CONFIGURATIONS
+* {
+    padding: 0; 
+    margin:  0;
+}
+body{ // Initialize Body
+    background-color: $backgroundColor;
+}
+// - - > Starting Layout
+#static-bg{ // Statis Granulated GIF
     position: absolute;
-    font-size: 200px;
-    left: 30px;
-    font-weight: bold;
-    color: orange;
+    background: url('assets/gifs/static.gif');
+    background-repeat: repeat;
+    background-position: center center; 
+    opacity: 0.04;
+    width: 100%;
+    height: 135vh;
+    z-index: -1;
 }
-#test{
-    @include p-general-layout();
-    top: 30px;
+    // Scroll Bar Layout
+::-webkit-scrollbar{
+    width: 7px;
 }
-#test-2{
-    @include p-general-layout();
-    top: 200px;
+::-webkit-scrollbar-track{
+    background: $backgroundColor;
+}
+::-webkit-scrollbar-thumb{
+    background: $generalOrange;
+    border-radius: 10px;
+    &:hover{
+        background: #b3773f;
+    }
+}
+// - - > NAVIGATION BAR CODES HERE
+#navigation-wrapper{
+    position: absolute;
+    right: 80px;
+    width: 710px;
+    padding: 7px 20px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    user-select: none;
+
+    span{
+        color: #CD6E2E;
+        font-family: $generalFont;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 38px;
+        line-height: 48px;
+        margin-left: 50px;
+        // Text Border
+        transition: 0.3s ease-in-out;
+        text-shadow: #000 0px 0px 1px, #000 0px 0px 1px,#000 0px 0px 1px, #000 0px 0px 1px,#000 0px 0px 1px,#000 0px 0px 1px;
+        -webkit-font-smoothing: antialiased;
+        
+        &:hover{
+            cursor: pointer;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        &:active{
+            transform: scale(0.96);
+        }
+    }
+    #shopping-cart-layout{
+        position: absolute;
+        right: -20px;
+        top: 14px;
+        width: 40px;
+        height: 40px;
+        filter: invert(54%) sepia(16%) saturate(2098%) hue-rotate(341deg) brightness(88%) contrast(89%);
+        transition: 0.3s ease-in-out;
+
+        &:hover{
+            cursor: pointer;
+            filter: invert(54%) sepia(16%) saturate(2098%) hue-rotate(341deg) brightness(88%) contrast(89%) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+    }
+    #circle-counter{
+        position: absolute;
+        top: 10px;
+        right: -35px;
+        width: 12px;
+        height: 12px;
+
+        border-radius: 50%;
+        background-color: $generalOrange;
+        border: 1px solid black;
+
+        #cart-number{
+            position: absolute;
+            right: 3px;
+            top: -18px;
+            font-family: $generalFont;
+            color: $backgroundColor;
+            font-size: 12px;
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
 }
 
-// - - > Box
-#outer-box{
+// - - > BODY CODES HERE
+#prime-mast{
     position: absolute;
-    width: 820px;
-    height: 372px;
-    left: 50px;
-    top: 100px;
+    top: 130px;
+    right: 70px;
+    width: 900px;
+    height: 200px;
 
-    background: #D2853D;
-    border: 2px solid #000000;
-    box-sizing: border-box;
-    box-shadow: inset 10px 0px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
+    font-family: $generalFont;
+    color: $generalOrange;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 100px;
+    line-height: 134px;
+    text-shadow: #000 0px 0px 1px, #000 0px 0px 1px,#000 0px 0px 1px, #000 0px 0px 1px,#000 0px 0px 1px,#000 0px 0px 1px;
+    -webkit-font-smoothing: antialiased;
+}
+#sub-prime{
+    position: absolute;
+    width: 470px;
+    height: 48px;
+    right: 500px;
+    top: 410px;
+
+    font-family: $generalFont;
+    color: black;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 40px;
+}
+#header-wave{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 674px;
+    height: 594px;
+    z-index: -1;
+}
+#logo-layout{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 150px;
+    height: 150px;
+
+    background: url('assets/images/logo.png');
+    background-position: 60% 65%;
+    background-size: 200px;
+    background-repeat: no-repeat;
+    overflow: hidden;
     transition: 0.3s ease-in-out;
 
-    #inner-box{
-        position: absolute;
-        top: -20px;
-        left: 10px;
-        width: 820px;
-        height: 372px;
-
-        background: #FFF6ED;
-        border: 2px solid #000000;
-        box-sizing: border-box;
-        border-radius: 20px;
-    }
     &:hover{
-        transform: scale(1.05);
         cursor: pointer;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        transform: scale(1.01);
+    }
+    &:active{
+        transform: scale(0.90);
+    }
+}
+// - - > Social Media Wrapper
+#social-wrapper{
+    position: absolute;
+    width: 100px;
+    height: 290px;
+    padding: 10px;
+    left: 22px;
+    top: 650px;
+    
+    a{
+        color: black;
+    }
+
+    // - - > General Social Media Layout
+    @mixin social-media-layout{
+        position: absolute;
+        width: 57px;
+        height: 60px;
+        opacity: 0.5;
+        transition: 0.3s ease-in-out;
+
+        &:hover{
+            cursor: pointer;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            transform: scale(1.01);
+            opacity: 0.7;
+        }
+   }
+    #facebook-logo{
+        @include social-media-layout();
+        left: 34px;
+    }
+    #instagram-logo{
+        @include social-media-layout();
+        top: 101px;
+        left: 34px;
+    }
+    #twitter-logo{
+        @include social-media-layout();
+        top: 202px;
+        left: 34px;
     }
 }
